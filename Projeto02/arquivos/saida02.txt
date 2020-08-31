@@ -1,0 +1,4 @@
+Origem: Americana Destino: Jaguariúna tempo: 1.1833333 Horas
+Origem: Jaguariúna Destino: Pirassununga tempo: 1.0166667 Horas
+Origem: Pirassununga Destino: São Paulo tempo: 1.9090909 Horas
+Origem: PosoAlegre Destino: Jaguariúna tempo: 0.42857143 Horas

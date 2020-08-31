@@ -1,0 +1,5 @@
+Marco,9,7,1
+Rafael,8,7,5
+Carlos,0,5,10
+Leonardo,2,4,10
+Bernardo,3,9,5
