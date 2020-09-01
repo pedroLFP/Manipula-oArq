@@ -29,7 +29,7 @@ public class DadosDao {
 			br = new BufferedReader(new FileReader(entrada));
 			String linha = br.readLine();
 			
-			
+		
 			while (linha != null) {
 			
 				dado = new Dados();
@@ -38,24 +38,43 @@ public class DadosDao {
 				dado.setRecuperados(Integer.parseInt(linha.split("\t")[2]));
 				dado.setMortes(Integer.parseInt(linha.split("\t")[3]));
 				dados.add(dado);
+				
+				linha = br.readLine();
+			}
+			
+			for (int i=0; i<dados.size(); i++) {
+				dado = dados.get(i);
+				
 				soConfirmados = (int) dado.getConfirmados();
 				soMortes = dado.getMortes();
 				soRecuperados = dado.getRecuperados();
 				
-				linha = br.readLine();
 				
+				somaMortes = somaMortes + soMortes;
+				somaRecuperados = somaRecuperados + soRecuperados;
+				somaConfirmados = somaConfirmados + soConfirmados;
+			}
+
+			for (int i=0; i<dados.size(); i++) {
+				dado = dados.get(i);
+
+				float recuperados = dado.getRecuperados();
+				float porcRecuperados = (recuperados/somaRecuperados)*100;
 				
-				while (x < 4) {
-					
-					somaMortes = somaMortes + soMortes;
-					somaRecuperados = somaRecuperados + soRecuperados;
-					somaConfirmados = somaConfirmados + soConfirmados;
-					x++;
-					break;
-				}
+				float confirmados = dado.getConfirmados();
+				float porcConfirmados = (confirmados/somaConfirmados)*100;
 				
+				float mortes = dado.getMortes();
+				float porcMortes = (mortes/somaMortes)*100;
+				
+				dado.setPorcentagem_confirmados(porcConfirmados);
+				dado.setPorcentagem_recuperados(porcRecuperados);
+				dado.setPorcentagem_mortes(porcMortes);
+								
 				
 			}
+
+			
 			
 			
 			

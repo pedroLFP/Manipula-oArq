@@ -6,8 +6,36 @@ public class Dados {
 	
 	private String pais;
 	private int confirmados, recuperados, mortes;
-	public DadosDao dd = new DadosDao();
+	private float porcentagem_confirmados, porcentagem_recuperados, porcentagem_mortes;
+	
+	public float getPorcentagem_confirmados() {
+		return porcentagem_confirmados;
+	}
 
+	public void setPorcentagem_confirmados(float porcentagem_confirmados) {
+		this.porcentagem_confirmados = porcentagem_confirmados;
+	}
+
+	public float getPorcentagem_recuperados() {
+		return porcentagem_recuperados;
+	}
+
+	public void setPorcentagem_recuperados(float porcentagem_recuperados) {
+		this.porcentagem_recuperados = porcentagem_recuperados;
+	}
+
+	public float getPorcentagem_mortes() {
+		return porcentagem_mortes;
+	}
+
+	public void setPorcentagem_mortes(float porcentagem_mortes) {
+		this.porcentagem_mortes = porcentagem_mortes;
+	}
+
+	public Dados() {
+		
+	}
+	
 	public String getPais() {
 		return pais;
 	}
@@ -42,29 +70,15 @@ public class Dados {
 
 	public String toString() {
 		
-		return pais + "\t" + confirmados + "\t" + recuperados + "\t" + mortes +"\t" + "\r\n";
+		return pais + "\t" + porcentagem_confirmados + "\t" + porcentagem_recuperados + "\t" + porcentagem_mortes +"\t" + "\r\n";
 	}
 	
 	public String toTXT() {
 		
-		return pais + "\t "  + getConfirmadosP() + "% \t"+ getRecuperadosP() + "% \t"+ getMortesP() + "%" + "\r\n";
+		return pais + "\t "  + (porcentagem_confirmados*2) + "%" + "\t"+ (porcentagem_recuperados*2) + "%" +  "\t"+ (porcentagem_mortes*2) + "%" + "\r\n";
 	}
 	
-	
-public int getConfirmadosP() {
-		
-		return (int)((confirmados/dd.somaConfirmados)*100);
-	}
-	
-public int getRecuperadosP() {
-	
-	return (int)((recuperados/dd.somaRecuperados)*100);
-}
 
-public int getMortesP() {
-	
-	return (int)((mortes/dd.somaMortes)*100);
-}
 
 
 
