@@ -17,13 +17,13 @@ public class DadosDao {
 	private Dados dado;
 	private String entrada = ".\\arquivos\\entrada03.txt";
 	private String saida = ".\\arquivos\\saida03.txt";
-	
+	public int soMortes, x = 0, somaMortes = 0, soConfirmados, somaConfirmados = 0, soRecuperados, somaRecuperados = 0;
 	
 	public ArrayList<Dados> openEntrada(){
 		
 		ArrayList<Dados> dados = new ArrayList<>();
 		
-		dado = new Dados();
+	
 		
 		try {
 			br = new BufferedReader(new FileReader(entrada));
@@ -32,17 +32,31 @@ public class DadosDao {
 			
 			while (linha != null) {
 			
-				
+				dado = new Dados();
 				dado.setPais(linha.split("\t")[0]);
 				dado.setConfirmados(Integer.parseInt(linha.split("\t")[1]));
 				dado.setRecuperados(Integer.parseInt(linha.split("\t")[2]));
 				dado.setMortes(Integer.parseInt(linha.split("\t")[3]));
 				dados.add(dado);
+				soConfirmados = (int) dado.getConfirmados();
+				soMortes = dado.getMortes();
+				soRecuperados = dado.getRecuperados();
 				
 				linha = br.readLine();
 				
-		
+				
+				while (x < 4) {
+					
+					somaMortes = somaMortes + soMortes;
+					somaRecuperados = somaRecuperados + soRecuperados;
+					somaConfirmados = somaConfirmados + soConfirmados;
+					x++;
+					break;
+				}
+				
+				
 			}
+			
 			
 			
 			
@@ -55,8 +69,12 @@ public class DadosDao {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
+		
+		
 		return dados;
+		
 	}
+	
 	
 	
 	public void saveSaida(ArrayList<Dados> dados) {

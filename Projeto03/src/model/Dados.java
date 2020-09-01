@@ -1,11 +1,12 @@
 package model;
 
+import dao.DadosDao;
+
 public class Dados {
 	
 	private String pais;
 	private int confirmados, recuperados, mortes;
-	
-	
+	public DadosDao dd = new DadosDao();
 
 	public String getPais() {
 		return pais;
@@ -46,10 +47,27 @@ public class Dados {
 	
 	public String toTXT() {
 		
-		return pais + "\t "  + (recuperados/confirmados) + "% \t"+ (mortes/confirmados) + "% \t"+ "\r\n";
+		return pais + "\t "  + getConfirmadosP() + "% \t"+ getRecuperadosP() + "% \t"+ getMortesP() + "%" + "\r\n";
 	}
 	
 	
+public int getConfirmadosP() {
+		
+		return (int)((confirmados/dd.somaConfirmados)*100);
+	}
 	
+public int getRecuperadosP() {
 	
+	return (int)((recuperados/dd.somaRecuperados)*100);
 }
+
+public int getMortesP() {
+	
+	return (int)((mortes/dd.somaMortes)*100);
+}
+
+
+
+
+}
+

@@ -16,7 +16,7 @@ public class Exercicio03 {
 		for(Dados n: nd.openEntrada()) {
 			
 			System.out.println(n.toString());
-
+			
 		}
 		
 		nd.saveSaida(nd.openEntrada());
